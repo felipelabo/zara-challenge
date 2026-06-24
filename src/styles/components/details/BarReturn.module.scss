@@ -1,0 +1,18 @@
+.bar-return {
+    margin-top: 80px;
+    width: 100svw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: $color-secondary;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding: $padding-large 100px;
+
+    button {
+        font-size: $font-small;
+        border: none;
+        background-color: transparent;
+    }
+}

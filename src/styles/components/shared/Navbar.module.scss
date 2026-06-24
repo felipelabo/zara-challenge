@@ -1,0 +1,29 @@
+.navbar {
+    width: 100svw;
+    height: 80px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: $color-secondary;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: $padding-large 100px;
+    z-index: 1000;
+
+    h1 {
+        font-size: $font-medium-large;
+    }
+
+    .cart-info {
+        font-size: $font-medium-large;
+
+        button {
+            font-size: $font-medium-large;
+            border: none;
+            background-color: transparent;
+            cursor: pointer;
+        }
+    }
+
+}

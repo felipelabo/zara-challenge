@@ -1,0 +1,12 @@
+.dashboard {
+    overflow: auto;
+    width: fit-content;
+    margin-top: 200px;
+}
+
+.product-list {
+    margin: 0px 100px;
+    margin-bottom: 100px;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(350px, 1fr));
+}

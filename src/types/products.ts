@@ -1,5 +1,5 @@
 
-export type ProductList = {
+export type Product = {
     id: string;
     brand: string;
     name: string;
@@ -30,5 +30,5 @@ export type ProductDetails = {
     specs: Specs;
     colorOptions: ColorOptions[];
     storageOptions: StorageOptions[];
-    similarProducts: ProductList[];
+    similarProducts: Product[];
 }

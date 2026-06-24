@@ -1,0 +1,19 @@
+.button {
+    width: 260px;
+    font-size: $font-small;
+    padding: 20px 32px;
+    border-radius: 0;
+
+}
+
+.primary {
+    background-color: $color-primary;
+    color: $color-secondary;
+    border: none;
+}
+
+.secondary {
+    background-color: transparent;
+    color: $color-primary;
+    border: 1px solid $color-primary;
+}

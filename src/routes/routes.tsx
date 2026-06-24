@@ -1,17 +1,28 @@
 import { createBrowserRouter } from "react-router";
 
+//layouts
+import LayoutNavbar from "../pages/layout/LayoutNavbar";
+
+//pages
+import Dashboard from "../pages/Dashboard";
+import Details from "../pages/Details";
+import Cart from "../pages/Cart";
+
 export const router = createBrowserRouter([
   {
     path: "/",
-    element: <div>Home</div>
-  },
-  {
-    path: "details/:id",
-    element: <div>Details</div>
-  },
-  {
-    path: "cart",
-    element: <div>Cart</div>
+    element: <LayoutNavbar />,
+    children: [
+      { index: true, element: <Dashboard /> },
+      {
+        path: "product/:id",
+        element: <Details />
+      },
+      {
+        path: "cart",
+        element: <Cart />
+      }
+    ]
   },
   {
     path: "*",

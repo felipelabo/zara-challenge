@@ -1,0 +1,98 @@
+.smartphone-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: $padding-medium;
+    border: 0.5px solid $color-primary;
+    outline: 0.5px solid $color-primary;
+    gap: $gap-large;
+    cursor: pointer;
+    position: relative;
+
+    &:hover {
+        .smartphone-fill {
+            transform: scaleY(1);
+        }
+
+        .smartphone-brand {
+            .name {
+                color: $color-secondary;
+            }
+
+            .brand {
+                color: $color-secondary;
+            }
+        }
+
+        .smartphone-price {
+            color: $color-secondary;
+        }
+    }
+
+}
+
+.smartphone-card-content {
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: $gap-large;
+}
+
+.smartphone-image-container {
+
+    width: 300px;
+    aspect-ratio: 1;
+    overflow: hidden;
+
+    .image {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+}
+
+.smartphone-info {
+    width: 100%;
+    display: flex;
+    gap: $gap-small;
+}
+
+.smartphone-brand {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: $gap-xs;
+
+    .brand {
+        font-weight: 400;
+        font-size: $font-xs;
+        color: $color-primary-light;
+        transition: color 0.4s ease;
+    }
+
+    .name {
+        font-weight: 400;
+        font-size: $font-small;
+        color: $color-primary;
+        transition: color 0.4s ease;
+    }
+}
+
+.smartphone-price {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    font-size: $font-small;
+    color: $color-primary;
+    transition: color 0.4s ease;
+}
+
+.smartphone-fill {
+    position: absolute;
+    inset: 0;
+    background: $color-primary;
+    transform: scaleY(0);
+    transform-origin: bottom;
+    transition: transform 0.4s ease;
+    z-index: 0;
+}
