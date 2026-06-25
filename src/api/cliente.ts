@@ -27,7 +27,7 @@ export class ApiClient {
         config?: Partial<ApiRequestConfig>
     ): Promise<T> {
 
-        let requestConfig: ApiRequestConfig = {
+        const requestConfig: ApiRequestConfig = {
             headers: {
                 ...this.defaultHeaders,
                 ...(config?.headers || {}),
@@ -40,18 +40,13 @@ export class ApiClient {
         const url = new URL(`${this.baseUrl}${endpoint}`);
 
         try {
-            console.log(`Making ${method} request to:`, url.toString());
             const response = await fetch(url.toString(), {
                 method,
                 headers: requestConfig.headers,
                 body: requestConfig.body ? JSON.stringify(requestConfig.body) : undefined,
             });
 
-            console.log(`Received response with status: ${response.status}`);
-
             const data: ApiResponse<T> = await response.json();
-
-            console.log('API response data:', data);
 
             if (!response.ok) {
                 throw new Error(data.message || 'API request failed');

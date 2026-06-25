@@ -2,7 +2,6 @@ import {
     createContext,
     useCallback,
     useContext,
-    useEffect,
     useMemo,
     useState,
     type ReactNode,
@@ -18,15 +17,7 @@ interface CartProviderProps {
 }
 
 export const CartProvider = ({ children }: CartProviderProps) => {
-
-    const [items, setItems] = useState<CartItem[]>([]);
-
-    console.log('CartProvider rendered with items:', items);
-
-    useEffect(() => {
-        const storedCart = getCart();
-        setItems(storedCart);
-    }, []);
+    const [items, setItems] = useState<CartItem[]>(() => getCart());
 
     const addToCart = useCallback((newItem: Omit<CartItem, "idCart">) => {
         const itemWithId: CartItem = {

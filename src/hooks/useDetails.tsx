@@ -21,7 +21,6 @@ const useDetails = (id: string) => {
         window.scrollTo(0, 0);
         try {
             const data = await ProductsService.getProductDetails(id);
-            console.log("Fetched product details:", data);
             setProductDetails(data);
             if (data.colorOptions && data.colorOptions.length > 0) {
                 setSelectedColor(data.colorOptions[0]);
