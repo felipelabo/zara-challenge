@@ -85,6 +85,87 @@ src/
 └── __tests__/       # Tests
 ```
 
+## Arquitectura
+
+### Gestión de Estado
+
+La aplicación usa una arquitectura clara de capas para manejar el estado:
+
+**Estado Global (Context API)**
+- CartContext: Carrito compartido entre páginas
+- Accesible desde cualquier componente con useCart()
+- Sincroniza automáticamente con localStorage
+
+**Estado Local (useState)**
+- Componentes mantienen su UI state local
+- Loading states, errores, valores de formularios
+- No se propaga a menos que sea necesario
+
+**Persistencia**
+- localStorage: Carrito se mantiene entre sesiones
+- Recuperación automática al cargar la aplicación
+
+### Flujo de Datos
+
+El flujo de datos sigue un patrón unidireccional:
+
+1. Usuario interactúa con componente
+2. Componente llama método del hook
+3. Hook ejecuta async operation (API call)
+4. Respuesta actualiza estado (setState)
+5. Re-render automático del componente
+6. Si es estado global, Context notifica a otros componentes
+
+Ejemplo: Agregar al carrito
+```
+DetailsPage → handleAddToCart() → useDetails hook 
+→ useCart.addToCart() → CartContext → localStorage → Navbar refleja cambios
+```
+
+### Patrones de Diseño
+
+**MVVM (Model-View-ViewModel)**
+
+La aplicación implementa el patrón MVVM para separar la UI de la lógica:
+
+- **Vista** (src/components, src/pages): Componentes React puros
+  - Solo reciben datos y callbacks
+  - No contienen lógica de negocio
+  - Renderizan interfaz basado en props
+  - Totalmente independientes
+
+- **Modelo de Vista** (src/hooks): Custom hooks que contienen la lógica
+  - useDashboard: Maneja productos, búsqueda, debounce
+  - useDetails: Maneja detalles, selecciones de color/almacenamiento
+  - Abstracción de estado y efectos
+  - Exponen métodos y estado a la Vista
+  - Testeable sin montar componentes
+
+- **Modelo** (src/services, src/types): Datos y comunicación
+  - ProductsService: Contrato con API
+  - Types: Estructura de datos tipada
+  - cartStorage: Persistencia
+
+Ventaja: El componente no conoce cómo obtiene los datos, solo usa el ViewModel.
+
+```
+Componente(Vista) → Hook(Modelo de Vista) → Servicio(Modelo)
+   (renderiza)          (contiene lógica)      (obtiene datos)
+```
+
+**Custom Hooks**
+- useDashboard: Lógica de listado y búsqueda
+- useDetails: Lógica de página de detalles
+- useCart: Acceso a estado global del carrito
+- Encapsulan lógica de negocio reutilizable
+
+**Separación de Responsabilidades**
+- Componentes: Solo renderizado
+- Hooks: Lógica de negocio
+- Servicios: Comunicación con API
+- Types: Contratos de datos
+
+
 ## Responsive Design
 
 Mobile-first con 3 breakpoints:
