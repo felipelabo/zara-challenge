@@ -10,7 +10,15 @@
     background-color: $color-secondary;
     width: 100%;
     z-index: 1000;
-    padding: 12px $padding-page;
+    padding: 12px $padding-page-mobile;
+
+    @include tablet {
+        padding: 12px $padding-page-tablet;
+    }
+
+    @include desktop {
+        padding: 12px $padding-page;
+    }
 
 }
 

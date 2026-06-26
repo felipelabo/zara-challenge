@@ -8,7 +8,15 @@
     display: flex;
     justify-content: start;
     align-items: center;
-    padding: $padding-large 100px;
+    padding: $padding-large $padding-page-mobile;
+
+    @include tablet {
+        padding: $padding-large $padding-page-tablet;
+    }
+
+    @include desktop {
+        padding: $padding-large $padding-page;
+    }
 
     button {
         font-size: $font-small;

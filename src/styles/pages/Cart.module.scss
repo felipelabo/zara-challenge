@@ -1,17 +1,35 @@
+// Estilos base para MOBILE (pantalla pequeña)
 .cart-page {
     width: 100svw;
     min-height: 100svh;
     padding-top: 100px;
-    padding-left: $padding-page;
-    padding-right: $padding-page;
+    padding-left: $padding-page-mobile;
+    padding-right: $padding-page-mobile;
     display: flex;
     flex-direction: column;
-    gap: $gap-xxl;
-    margin-bottom: $padding-page;
+    gap: $gap-xl;
+    padding-bottom: $padding-medium;
 
     h1 {
-        font-size: $font-xl;
+        font-size: $font-large;
         font-weight: 100;
+    }
+
+    // Tablet
+    @include tablet {
+        padding-left: $padding-page-tablet;
+        padding-right: $padding-page-tablet;
+
+        h1 {
+            font-size: $font-xl;
+        }
+    }
+
+    // Desktop
+    @include desktop {
+        padding-left: $padding-page;
+        padding-right: $padding-page;
+        gap: $gap-xxl;
     }
 }
 
@@ -19,32 +37,102 @@
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: $gap-large;
+    gap: $gap-medium;
+
+    @include tablet {
+        gap: $gap-large;
+    }
 }
 
-.cart-footer {
+.cart-footer-price-mobile {
+
+    .total-price p {
+        display: flex;
+        justify-content: space-between;
+        font-size: $font-medium-large;
+        padding-top: $padding-medium;
+        padding-bottom: $padding-medium;
+    }
+
+    @include tablet {
+        display: none;
+    }
+
+    @include desktop {
+        display: none;
+    }
+}
+
+.cart-footer-actions {
     display: flex;
-    justify-content: end;
-    align-items: center;
+    flex-wrap: wrap;
     gap: $gap-medium;
-    padding-top: $padding-large;
+    padding-top: $padding-medium;
+
+    // Tablet: lado a lado
+    @include tablet {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        padding-top: $padding-large;
+        gap: $gap-medium;
+    }
+
+    // Desktop
+    @include desktop {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        gap: $gap-medium;
+    }
+
+    .button-continue {
+        flex: 1;
+
+        @include tablet {
+            flex: 0 1 auto;
+            width: fit-content;
+        }
+
+        @include desktop {
+            flex: 0 1 auto;
+            width: 260px;
+        }
+    }
+
+    .button-pay {
+        flex: 1;
+
+        @include tablet {
+            flex: 0 1 auto;
+        }
+    }
 
     .total-price {
-        flex: 1;
-        display: flex;
-        justify-content: end;
-        padding-right: 80px;
+        display: none;
 
         p {
             display: flex;
             gap: $gap-large;
         }
 
+        @include tablet {
+            display: flex;
+            justify-content: end;
+            width: auto;
+            padding-right: 40px;
+            flex: 1;
+        }
+
+        @include desktop {
+            display: flex;
+            justify-content: end;
+            width: auto;
+            padding-right: 80px;
+        }
+
     }
 
-    p {
-        font-size: $font-medium;
-        font-weight: 100;
-    }
 
 }

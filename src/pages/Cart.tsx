@@ -18,18 +18,35 @@ const Cart = () => {
                 ))}
             </div>
             <div className={style['cart-footer']}>
-                <Button
-                    style="secondary"
-                    onClick={() => navigate('/')}
-                >
-                    CONTINUE SHOPPING
-                </Button>
-                <div className={style['total-price']}>
-                    <p>TOTAL <span>{totalPrice} EUR</span></p>
+                <div className={style['cart-footer-price-mobile']}>
+                    {totalItems > 0 && 
+                        <div className={style['total-price']}>
+                            <p>TOTAL <span>{totalPrice} EUR</span></p>
+                        </div>
+                    }
                 </div>
-                <Button>
-                    PAY
-                </Button>
+                <div className={style['cart-footer-actions']}>
+                    <Button
+                        className={style['button-continue']}
+                        style="secondary"
+                        onClick={() => navigate('/')}
+                    >
+                        CONTINUE SHOPPING
+                    </Button>
+                    {totalItems > 0 && 
+                        <>
+                            <div className={style['total-price']}>
+                                <p>TOTAL <span>{totalPrice} EUR</span></p>
+                            </div>
+                            <Button
+                            className={style['button-pay']}
+                            >
+                                PAY
+                            </Button>
+                        </>
+                    }
+                </div>
+                
             </div>
         </div>
     );

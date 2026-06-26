@@ -8,8 +8,16 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: $padding-large 100px;
+    padding: $padding-large $padding-page-mobile;
     z-index: 1000;
+
+    @include tablet {
+        padding: $padding-large $padding-page-tablet;
+    }
+
+    @include desktop {
+        padding: $padding-large $padding-page;
+    }
 
     h1 {
         font-size: $font-medium-large;

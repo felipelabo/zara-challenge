@@ -1,7 +1,13 @@
+// Importar mixins y breakpoints antes de usarlos
+@use './breakpoints' as *;
+@use './mixins' as *;
+
+// Colores
 $color-primary: #000000;
 $color-primary-light: #79736d;
 $color-secondary: #ffffff;
 
+// Padding
 $padding-small: 8px;
 $padding-medium: 16px;
 $padding-large: 24px;
@@ -9,7 +15,10 @@ $padding-xl: 32px;
 $padding-xxl: 40px;
 
 $padding-page: 100px;
+$padding-page-tablet: 24px;
+$padding-page-mobile: 16px;
 
+// Gaps
 $gap-xs: 4px;
 $gap-small: 8px;
 $gap-medium: 16px;
@@ -18,6 +27,7 @@ $gap-xl: 32px;
 $gap-xxl: 40px;
 $gap-xxxl: 64px;
 
+// Tipografía
 $font-xs: 10px;
 $font-small: 12px;
 $font-medium: 14px;
@@ -25,4 +35,7 @@ $font-medium-large: 16px;
 $font-large: 20px;
 $font-xl: 24px;
 
+// Layouts
 $page-details-container-width: 1200px;
+$page-details-container-width-tablet: 754px;
+$page-details-container-width-mobile: 100%;

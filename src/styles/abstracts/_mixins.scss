@@ -1,0 +1,39 @@
+// Mixins para responsive design con mobile-first approach
+// Uso: @include tablet { ... } dentro de selectores
+
+@use 'sass:map';
+@use './breakpoints' as bp;
+
+// Mixin genérico para media queries
+@mixin respond($breakpoint) {
+  @if map.has-key(bp.$breakpoints, $breakpoint) {
+    $value: map.get(bp.$breakpoints, $breakpoint);
+
+    @media (min-width: $value) {
+      @content;
+    }
+  }
+
+  @else {
+    @warn "Breakpoint #{$breakpoint} no existe en $breakpoints";
+  }
+}
+
+// Mixins semánticos para mejor legibilidad
+@mixin mobile {
+  @include respond('mobile') {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @include respond('tablet') {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @include respond('desktop') {
+    @content;
+  }
+}
